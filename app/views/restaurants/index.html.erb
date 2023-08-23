@@ -1,0 +1,10 @@
+<h1>All restaurants</h1>
+
+  <div class="container d-flex flex-wrap">
+    <% @restaurants.each do |restaurant| %>
+      <div class="card m-3 p-3" style="width: 14rem;"><%= render restaurant %>
+      <%= link_to "details", restaurant_path(restaurant),  class: "btn btn-primary" %></div>
+    <% end %>
+  </div>
+
+<%= link_to "Add new restaurant", new_restaurant_path, class: "btn btn-warning" %>

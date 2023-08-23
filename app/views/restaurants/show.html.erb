@@ -1,0 +1,19 @@
+<h1>Restaurant</h1>
+<div class="card m-3 p-3" style="width: 20rem;">
+  <%= render @restaurant %>
+  <p>
+    <%= link_to "Edit" , edit_restaurant_path,  class: "btn btn-success" %>
+    <%= link_to "Delete", restaurant_path(@restaurant), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger" %>
+  </p>
+  <div>
+    <%= link_to "Add a review", new_restaurant_review_path(@restaurant), class: "btn btn-warning" %>
+    <% @restaurant.reviews.each do |review| %>
+      <%= review.content %>
+    <% end %>
+  </div>
+</div>
+
+
+
+<p></p>
+<p><%= link_to "Go back to the list" , restaurants_path,  class: "btn btn-primary"%></p>
