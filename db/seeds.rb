@@ -9,6 +9,7 @@ require 'faker'
 
 puts "Cleaning database..."
 Restaurant.destroy_all
+Review.destroy_all
 
 puts 'Creating 5 fake restaurants...'
 5.times do
@@ -19,5 +20,16 @@ puts 'Creating 5 fake restaurants...'
     category: %w[chinese italian japanese french belgian].sample
   )
   restaurant.save!
+end
+puts 'Finished!'
+
+puts 'Creating 25 fake reviews...'
+25.times do
+  review = Review.new(
+    rating: Faker::Number.between(from: 0, to: 5),
+    content: Faker::Restaurant.review,
+    # restaurant_id: Faker::Number.between(from: 0, to: 5)
+  )
+  review.save!
 end
 puts 'Finished!'
